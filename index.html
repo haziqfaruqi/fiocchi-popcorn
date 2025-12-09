@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiocchi | Precision Popped</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            850: '#1f1f22', 
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-zinc-50 text-zinc-600 font-sans antialiased selection:bg-zinc-900 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200/50 supports-[backdrop-filter]:bg-white/60">
+        <div class="w-full px-6 h-14 flex items-center justify-between">
+            <!-- Mobile Menu -->
+            <button class="md:hidden p-1 text-zinc-500 hover:text-zinc-900 transition-colors">
+                <span class="iconify" data-icon="lucide:menu" data-width="20" data-height="20"></span>
+            </button>
+
+            <!-- Logo -->
+            <a href="#" class="text-lg font-semibold tracking-tighter text-zinc-900 uppercase">
+                Fiocchi<span class="text-zinc-400">.</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#collection" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Collection</a>
+                <a href="flavor-lab.html" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Flavor Lab</a>
+                <a href="subscription.html" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Subscription</a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <button class="p-1.5 text-zinc-400 hover:text-zinc-900 transition-colors">
+                    <span class="iconify" data-icon="lucide:search" data-width="18" data-height="18"></span>
+                </button>
+                <div class="h-4 w-px bg-zinc-200 mx-1"></div>
+                <button class="relative p-1.5 text-zinc-400 hover:text-zinc-900 transition-colors flex items-center gap-2 group">
+                    <span class="text-[13px] font-medium hidden sm:block group-hover:text-zinc-900">Cart (0)</span>
+                    <span class="iconify" data-icon="lucide:shopping-bag" data-width="18" data-height="18"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden border-b border-zinc-200">
+        <div class="w-full px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="max-w-xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-zinc-200 text-zinc-600 text-[11px] font-medium mb-8 shadow-sm">
+                    <span class="relative flex h-1.5 w-1.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-zinc-500"></span>
+                    </span>
+                    Batch No. 42 Available Now
+                </div>
+                <h1 class="text-5xl md:text-7xl font-medium tracking-tighter text-zinc-900 leading-[1.05] mb-6">
+                    Precision popped. <br>
+                    <span class="text-zinc-400">Radically simple.</span>
+                </h1>
+                <p class="text-lg text-zinc-500 max-w-md mb-10 leading-relaxed font-light tracking-wide">
+                    Heirloom corn air-popped to exacting standards. Finished with cold-pressed oils and single-origin spices.
+                </p>
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <a href="#collection" class="inline-flex h-11 items-center justify-center rounded-md bg-zinc-900 px-6 text-[13px] font-medium text-white shadow-sm transition-all hover:bg-zinc-800 focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2">
+                        Shop Collection
+                    </a>
+                    <a href="#process" class="inline-flex h-11 items-center justify-center rounded-md border border-zinc-200 bg-white px-6 text-[13px] font-medium text-zinc-600 shadow-sm transition-all hover:bg-zinc-50 hover:text-zinc-900 focus:ring-2 focus:ring-zinc-200 focus:ring-offset-2">
+                        Explore Process
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="relative hidden md:block h-full min-h-[400px]">
+                <div class="absolute inset-0 -rotate-6 bg-gradient-to-l from-transparent to-zinc-50 z-10 w-20"></div>
+                <!-- Main Hero Image -->
+                <div class="relative z-0 w-full h-full animate-float">
+                     <div class="absolute -inset-4 bg-gradient-to-tr from-zinc-200 to-transparent opacity-10 rounded-full blur-3xl"></div>
+                     <img src="https://images.unsplash.com/photo-1682970468815-0db201b7804d?q=80&w=1330&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                          alt="Premium Popcorn" 
+                          class="w-full h-full object-contain drop-shadow-2xl scale-110 -rotate-6 grayscale-[0.2] contrast-[1.1] hover:scale-115 transition-transform duration-700">
+                </div>
+                <!-- Quality Badge -->
+                <div class="absolute top-6 right-6 bg-white/95 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-zinc-200/50 z-20 animate-float" style="animation-delay: 1s;">
+                    <div class="flex items-center gap-2">
+                        <div class="h-6 w-6 rounded-full bg-amber-50 flex items-center justify-center">
+                            <span class="iconify text-amber-600 text-xs" data-icon="lucide:star" data-width="10" data-height="10"></span>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-zinc-900">Grade A</p>
+                            <p class="text-[8px] text-zinc-500">Premium Texture</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Refined Background -->
+        <div class="absolute top-0 right-0 -z-10 w-full h-full overflow-hidden opacity-30 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-[500px] h-[500px] bg-zinc-200 rounded-full blur-3xl opacity-40 animate-blob"></div>
+            <div class="absolute top-48 -right-48 w-[400px] h-[400px] bg-stone-200 rounded-full blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
+        </div>
+    </section>
+
+    <!-- Metrics / Trusted -->
+    <section class="border-b border-zinc-200 bg-white relative z-20">
+        <div class="w-full px-6 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col gap-1 border-l border-zinc-100 pl-4">
+                    <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Origin</span>
+                    <span class="text-sm font-medium text-zinc-900">Iowa, Family Farm</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l border-zinc-100 pl-4">
+                    <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Method</span>
+                    <span class="text-sm font-medium text-zinc-900">Small-Batch Air Pop</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l border-zinc-100 pl-4">
+                    <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Ingredients</span>
+                    <span class="text-sm font-medium text-zinc-900">Non-GMO Certified</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l border-zinc-100 pl-4">
+                    <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Shipping</span>
+                    <span class="text-sm font-medium text-zinc-900">Carbon Neutral</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection -->
+    <section id="collection" class="py-24 bg-zinc-50/50">
+        <div class="w-full px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-2xl font-medium tracking-tight text-zinc-900 mb-2">Signature Flavors</h2>
+                    <p class="text-zinc-500 text-sm font-light max-w-md">Formulated for texture, aroma, and depth.</p>
+                </div>
+                
+                <div class="flex items-center gap-1 bg-white p-1 rounded-md border border-zinc-200 shadow-sm">
+                    <button class="px-3 py-1 rounded text-[11px] font-medium bg-zinc-100 text-zinc-900">All</button>
+                    <button class="px-3 py-1 rounded text-[11px] font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Savory</button>
+                    <button class="px-3 py-1 rounded text-[11px] font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Sweet</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="group flex flex-col bg-white rounded-xl border border-zinc-200 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-zinc-300 overflow-hidden">
+                    <div class="aspect-[4/3] bg-zinc-100 relative overflow-hidden">
+                         <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&q=80&w=800"
+                              alt="Sea Salt"
+                              class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700">
+                         <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base font-medium text-zinc-900">Sea Salt & Cracked Pepper</h3>
+                            <span class="text-xs font-semibold bg-zinc-100 px-2 py-1 rounded text-zinc-900">$12</span>
+                        </div>
+                        <p class="text-[13px] text-zinc-500 leading-relaxed mb-6 font-light">
+                            Harvested Himalayan salt crystals paired with Tellicherry black pepper.
+                        </p>
+                        
+                        <div class="mt-auto pt-4 border-t border-zinc-100 flex items-center justify-between gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer group/opt">
+                                <div class="w-4 h-4 rounded border border-zinc-300 flex items-center justify-center transition-colors group-hover/opt:border-zinc-400">
+                                    <input type="checkbox" class="peer sr-only">
+                                    <span class="iconify opacity-0 peer-checked:opacity-100 text-zinc-900" data-icon="lucide:check" data-width="10" data-height="10"></span>
+                                </div>
+                                <span class="text-[11px] text-zinc-500">Gift Box (+$3)</span>
+                            </label>
+
+                            <button class="text-[11px] font-medium text-zinc-900 hover:text-zinc-600 flex items-center gap-1 transition-colors">
+                                Add to Cart <span class="iconify" data-icon="lucide:arrow-right" data-width="12" data-height="12"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group flex flex-col bg-white rounded-xl border border-zinc-200 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-zinc-300 overflow-hidden">
+                    <div class="aspect-[4/3] bg-orange-50/50 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?auto=format&fit=crop&q=80&w=800"
+                             alt="Cheddar"
+                             class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base font-medium text-zinc-900">Reserve White Cheddar</h3>
+                            <span class="text-xs font-semibold bg-zinc-100 px-2 py-1 rounded text-zinc-900">$14</span>
+                        </div>
+                        <p class="text-[13px] text-zinc-500 leading-relaxed mb-6 font-light">
+                            Aged 12 months. Sharp, creamy profile with zero artificial powders.
+                        </p>
+                        
+                        <div class="mt-auto pt-4 border-t border-zinc-100 flex items-center justify-between gap-4">
+                             <label class="flex items-center gap-2 cursor-pointer group/opt">
+                                <div class="w-4 h-4 rounded border border-zinc-300 flex items-center justify-center transition-colors group-hover/opt:border-zinc-400">
+                                    <input type="checkbox" class="peer sr-only">
+                                    <span class="iconify opacity-0 peer-checked:opacity-100 text-zinc-900" data-icon="lucide:check" data-width="10" data-height="10"></span>
+                                </div>
+                                <span class="text-[11px] text-zinc-500">Gift Box (+$3)</span>
+                            </label>
+
+                            <button class="text-[11px] font-medium text-zinc-900 hover:text-zinc-600 flex items-center gap-1 transition-colors">
+                                Add to Cart <span class="iconify" data-icon="lucide:arrow-right" data-width="12" data-height="12"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group flex flex-col bg-white rounded-xl border border-zinc-200 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-zinc-300 overflow-hidden">
+                    <div class="aspect-[4/3] bg-stone-100 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1627260799486-77884e930905?auto=format&fit=crop&q=80&w=800"
+                             alt="Truffle"
+                             class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base font-medium text-zinc-900">Black Truffle & Rosemary</h3>
+                            <span class="text-xs font-semibold bg-zinc-100 px-2 py-1 rounded text-zinc-900">$18</span>
+                        </div>
+                        <p class="text-[13px] text-zinc-500 leading-relaxed mb-6 font-light">
+                            Infused with Italian truffle oil and hand-crushed dried rosemary.
+                        </p>
+                        
+                        <div class="mt-auto pt-4 border-t border-zinc-100 flex items-center justify-between gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer group/opt">
+                                <div class="w-4 h-4 rounded border border-zinc-300 flex items-center justify-center transition-colors group-hover/opt:border-zinc-400">
+                                    <input type="checkbox" class="peer sr-only">
+                                    <span class="iconify opacity-0 peer-checked:opacity-100 text-zinc-900" data-icon="lucide:check" data-width="10" data-height="10"></span>
+                                </div>
+                                <span class="text-[11px] text-zinc-500">Gift Box (+$3)</span>
+                            </label>
+
+                            <button class="text-[11px] font-medium text-zinc-900 hover:text-zinc-600 flex items-center gap-1 transition-colors">
+                                Add to Cart <span class="iconify" data-icon="lucide:arrow-right" data-width="12" data-height="12"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs / Dark Mode -->
+    <section class="py-24 bg-zinc-900 text-zinc-300 overflow-hidden relative">
+        <div class="w-full px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-2xl font-medium tracking-tight text-white mb-6">Transparent Sourcing</h2>
+                        <p class="text-sm font-light text-zinc-400 leading-relaxed max-w-md">
+                            We believe in radical transparency. Every bag can be traced back to the acre where the corn was harvested.
+                        </p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-5">
+                            <div class="h-10 w-10 rounded-md bg-zinc-800 flex items-center justify-center shrink-0 border border-zinc-700/50">
+                                <span class="iconify text-zinc-100" data-icon="lucide:scan-line" data-width="18" data-height="18"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-zinc-100 mb-1">Lot Tracking</h3>
+                                <p class="text-xs text-zinc-500 font-light">Scan the QR code on your bag to view harvest data.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <div class="h-10 w-10 rounded-md bg-zinc-800 flex items-center justify-center shrink-0 border border-zinc-700/50">
+                                <span class="iconify text-zinc-100" data-icon="lucide:flask-conical" data-width="18" data-height="18"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-zinc-100 mb-1">Lab Tested</h3>
+                                <p class="text-xs text-zinc-500 font-light">Tested for mycotoxins and pesticides before packaging.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Visualization Card -->
+                <div class="relative bg-zinc-800/40 backdrop-blur-sm rounded-xl p-8 border border-zinc-700/50 shadow-2xl">
+                    <div class="flex justify-between items-center mb-8 border-b border-zinc-700/50 pb-4">
+                        <span class="text-xs font-medium text-zinc-400 uppercase tracking-widest">Analysis</span>
+                        <div class="flex gap-1">
+                            <div class="w-2 h-2 rounded-full bg-zinc-600"></div>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Custom Meter 1 -->
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-2">
+                                <span class="text-zinc-300 font-medium">Dietary Fiber</span>
+                                <span class="text-zinc-500">5g / serving</span>
+                            </div>
+                            <div class="h-1 w-full bg-zinc-700/50 rounded-full overflow-hidden">
+                                <div class="h-full bg-white w-[65%] rounded-full shadow-[0_0_10px_rgba(255,255,255,0.3)]"></div>
+                            </div>
+                        </div>
+                         <!-- Custom Meter 2 -->
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-2">
+                                <span class="text-zinc-300 font-medium">Whole Grain</span>
+                                <span class="text-zinc-500">100%</span>
+                            </div>
+                            <div class="h-1 w-full bg-zinc-700/50 rounded-full overflow-hidden">
+                                <div class="h-full bg-zinc-400 w-[100%] rounded-full"></div>
+                            </div>
+                        </div>
+                         <!-- Custom Meter 3 -->
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-2">
+                                <span class="text-zinc-300 font-medium">Net Carbs</span>
+                                <span class="text-zinc-500">12g</span>
+                            </div>
+                            <div class="h-1 w-full bg-zinc-700/50 rounded-full overflow-hidden">
+                                <div class="h-full bg-zinc-500 w-[45%] rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-zinc-700/50 grid grid-cols-2 gap-4">
+                        <div>
+                             <span class="block text-[10px] text-zinc-500 mb-1">Serving Size</span>
+                             <span class="text-sm text-zinc-200">28 grams</span>
+                        </div>
+                        <div>
+                             <span class="block text-[10px] text-zinc-500 mb-1">Calories</span>
+                             <span class="text-sm text-zinc-200">120 kcal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-zinc-200 pt-20 pb-12">
+        <div class="w-full px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 mb-20">
+                <div class="col-span-2 md:col-span-1">
+                    <a href="#" class="text-base font-semibold tracking-tighter text-zinc-900 uppercase mb-6 block">
+                        Fiocchi<span class="text-zinc-400">.</span>
+                    </a>
+                </div>
+                
+                <div>
+                    <h4 class="text-[11px] font-semibold text-zinc-900 uppercase tracking-widest mb-6">Product</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Shop All</a></li>
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Subscription</a></li>
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Gift Sets</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-[11px] font-semibold text-zinc-900 uppercase tracking-widest mb-6">About</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Manifesto</a></li>
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Sourcing</a></li>
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-[11px] font-semibold text-zinc-900 uppercase tracking-widest mb-6">Newsletter</h4>
+                    <form class="flex flex-col gap-2">
+                        <div class="relative group">
+                            <input type="email" placeholder="email@domain.com" class="w-full bg-zinc-50 border border-zinc-200 text-sm text-zinc-900 rounded-md px-3 py-2 outline-none focus:border-zinc-400 focus:bg-white transition-all placeholder:text-zinc-400 font-light" required>
+                            <button type="submit" class="absolute right-2 top-2 p-0.5 text-zinc-400 hover:text-zinc-900 transition-colors">
+                                <span class="iconify" data-icon="lucide:arrow-right" data-width="16" data-height="16"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-zinc-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[11px] text-zinc-400">&copy; 2024 Fiocchi Popcorn Co.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-zinc-400 hover:text-zinc-900 transition-colors"><span class="iconify" data-icon="lucide:instagram" data-width="16" data-height="16"></span></a>
+                    <a href="#" class="text-zinc-400 hover:text-zinc-900 transition-colors"><span class="iconify" data-icon="lucide:twitter" data-width="16" data-height="16"></span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Voting functionality
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('VOTE')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Get the parent card
+                    const card = this.closest('.group');
+                    const voteCount = card.querySelector('.text-xs.text-amber-600');
+
+                    // Update vote count
+                    let currentVotes = parseInt(voteCount.textContent);
+                    currentVotes++;
+                    voteCount.textContent = currentVotes + ' votes';
+
+                    // Show success feedback
+                    const originalText = this.textContent;
+                    this.textContent = 'VOTED!';
+                    this.classList.add('bg-green-500', 'hover:bg-green-600');
+                    this.classList.remove('bg-amber-500', 'hover:bg-amber-600');
+
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.classList.remove('bg-green-500', 'hover:bg-green-600');
+                        this.classList.add('bg-amber-500', 'hover:bg-amber-600');
+                    }, 2000);
+                });
+            }
+        });
+
+        // Quiz form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedGoal = document.querySelector('input[name="snacking-goal"]:checked');
+
+            if (!selectedGoal) {
+                // Show error message
+                showMessage('Please select your snacking goal before submitting.', 'error');
+                return;
+            }
+
+            // Show success message
+            const goalText = selectedGoal.parentElement.querySelector('.text-sm.font-medium').textContent;
+            showMessage(`Thank you! We've recorded your preference for "${goalText}". Your feedback helps us create better flavors for you!`, 'success');
+
+            // Reset form
+            this.reset();
+        });
+
+        // Message display function
+        function showMessage(message, type) {
+            // Create message element
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `fixed top-20 right-6 px-6 py-4 rounded-lg shadow-lg z-50 transition-all duration-300 transform translate-x-full ${
+                type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+            }`;
+            messageDiv.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <span class="iconify ${type === 'success' ? 'text-white' : 'text-white'}" data-icon="${type === 'success' ? 'lucide:check-circle' : 'lucide:x-circle'}" data-width="20" data-height="20"></span>
+                    <span>${message}</span>
+                </div>
+            `;
+
+            // Add to page
+            document.body.appendChild(messageDiv);
+
+            // Animate in
+            setTimeout(() => {
+                messageDiv.classList.remove('translate-x-full');
+            }, 100);
+
+            // Remove after 5 seconds
+            setTimeout(() => {
+                messageDiv.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(messageDiv);
+                }, 300);
+            }, 5000);
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor Lab - Fiocchi | Co-Create Our Next Batch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            850: '#1f1f22',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-zinc-50 text-zinc-600 font-sans antialiased selection:bg-zinc-900 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200/50 supports-[backdrop-filter]:bg-white/60">
+        <div class="w-full px-6 h-14 flex items-center justify-between">
+            <!-- Mobile Menu -->
+            <button class="md:hidden p-1 text-zinc-500 hover:text-zinc-900 transition-colors">
+                <span class="iconify" data-icon="lucide:menu" data-width="20" data-height="20"></span>
+            </button>
+
+            <!-- Logo -->
+            <a href="index.html" class="text-lg font-semibold tracking-tighter text-zinc-900 uppercase">
+                Fiocchi<span class="text-zinc-400">.</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Home</a>
+                <a href="flavor-lab.html" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Flavor Lab</a>
+                <a href="subscription.html" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Subscription</a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <button class="p-1.5 text-zinc-400 hover:text-zinc-900 transition-colors">
+                    <span class="iconify" data-icon="lucide:search" data-width="18" data-height="18"></span>
+                </button>
+                <div class="h-4 w-px bg-zinc-200 mx-1"></div>
+                <button class="relative p-1.5 text-zinc-400 hover:text-zinc-900 transition-colors flex items-center gap-2 group">
+                    <span class="text-[13px] font-medium hidden sm:block group-hover:text-zinc-900">Cart (0)</span>
+                    <span class="iconify" data-icon="lucide:shopping-bag" data-width="18" data-height="18"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden border-b border-zinc-200">
+        <div class="w-full px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="max-w-xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-zinc-200 text-zinc-600 text-[11px] font-medium mb-8 shadow-sm">
+                    <span class="relative flex h-1.5 w-1.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-zinc-500"></span>
+                    </span>
+                    Co-Creation Active
+                </div>
+                <h1 class="text-5xl md:text-7xl font-medium tracking-tighter text-zinc-900 leading-[1.05] mb-6">
+                    Co-Create Our Next Batch <br>
+                    <span class="text-zinc-400">Your Voice Matters.</span>
+                </h1>
+                <p class="text-lg text-zinc-500 max-w-md mb-10 leading-relaxed font-light tracking-wide">
+                    Help us decide what to make next. Your votes shape our R&D and influence the flavors we bring to market.
+                </p>
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <a href="#voting" class="inline-flex h-11 items-center justify-center rounded-md bg-zinc-900 px-6 text-[13px] font-medium text-white shadow-sm transition-all hover:bg-zinc-800 focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2">
+                        Vote Now
+                    </a>
+                    <a href="#quiz" class="inline-flex h-11 items-center justify-center rounded-md border border-zinc-200 bg-white px-6 text-[13px] font-medium text-zinc-600 shadow-sm transition-all hover:bg-zinc-50 hover:text-zinc-900 focus:ring-2 focus:ring-zinc-200 focus:ring-offset-2">
+                        Take Quiz
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="relative hidden md:block h-full min-h-[400px]">
+                <div class="absolute inset-0 -rotate-6 bg-gradient-to-l from-transparent to-zinc-50 z-10 w-20"></div>
+                <!-- Main Hero Image -->
+                <div class="relative z-0 w-full h-full animate-float">
+                     <div class="absolute -inset-4 bg-gradient-to-tr from-zinc-200 to-transparent opacity-10 rounded-full blur-3xl"></div>
+                     <img src="img/flab.jpg"
+                          alt="Flavor Lab"
+                          class="w-full h-full object-contain drop-shadow-2xl scale-110 -rotate-6 grayscale-[0.2] contrast-[1.1] hover:scale-115 transition-transform duration-700">
+                </div>
+                <!-- Activity Badge -->
+                <div class="absolute top-6 right-6 bg-white/95 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-zinc-200/50 z-20 animate-float" style="animation-delay: 1s;">
+                    <div class="flex items-center gap-2">
+                        <div class="h-6 w-6 rounded-full bg-amber-50 flex items-center justify-center">
+                            <span class="iconify text-amber-600 text-xs" data-icon="lucide:users" data-width="10" data-height="10"></span>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-zinc-900">224 Votes</p>
+                            <p class="text-[8px] text-zinc-500">Community Active</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Refined Background -->
+        <div class="absolute top-0 right-0 -z-10 w-full h-full overflow-hidden opacity-30 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-[500px] h-[500px] bg-zinc-200 rounded-full blur-3xl opacity-40 animate-blob"></div>
+            <div class="absolute top-48 -right-48 w-[400px] h-[400px] bg-stone-200 rounded-full blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
+        </div>
+    </section>
+
+    <!-- Metrics / Trusted -->
+    <section class="border-b border-zinc-200 bg-white relative z-20">
+        <div class="w-full px-6 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col gap-1 border-l border-zinc-100 pl-4">
+                    <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Active Votes</span>
+                    <span class="text-sm font-medium text-zinc-900">224 Total</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l border-zinc-100 pl-4">
+                    <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Participants</span>
+                    <span class="text-sm font-medium text-zinc-900">156 Students</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l border-zinc-100 pl-4">
+                    <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Feedback</span>
+                    <span class="text-sm font-medium text-zinc-900">89 Responses</span>
+                </div>
+                <div class="flex flex-col gap-1 border-l border-zinc-100 pl-4">
+                    <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Status</span>
+                    <span class="text-sm font-medium text-zinc-900">Live Now</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voting Feature -->
+    <section class="py-24 bg-zinc-50/50" id="voting">
+        <div class="w-full px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-2xl font-medium tracking-tight text-zinc-900 mb-2">Vote for Your Favorite Flavor</h2>
+                    <p class="text-zinc-500 text-sm font-light max-w-md">Choose the popcorn flavor you'd love to see next!</p>
+                </div>
+
+                <div class="flex items-center gap-1 bg-white p-1 rounded-md border border-zinc-200 shadow-sm">
+                    <button class="px-3 py-1 rounded text-[11px] font-medium bg-zinc-100 text-zinc-900">All Flavors</button>
+                    <button class="px-3 py-1 rounded text-[11px] font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Spicy</button>
+                    <button class="px-3 py-1 rounded text-[11px] font-medium text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50 transition-colors">Savory</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Option 1 -->
+                <div class="group flex flex-col bg-white rounded-xl border border-zinc-200 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-zinc-300 overflow-hidden">
+                    <div class="aspect-[4/3] bg-red-50 relative overflow-hidden">
+                         <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&q=80&w=800"
+                              alt="Spicy Mala"
+                              class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700">
+                         <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base font-medium text-zinc-900">Spicy Mala</h3>
+                            <span class="text-xs font-semibold bg-zinc-100 px-2 py-1 rounded text-zinc-900">128 votes</span>
+                        </div>
+                        <p class="text-[13px] text-zinc-500 leading-relaxed mb-6 font-light">
+                            Tingly numbing heat with Sichuan peppercorns and dried chili.
+                        </p>
+
+                        <div class="mt-auto pt-4 border-t border-zinc-100 flex items-center justify-between gap-4">
+                            <span class="text-[11px] text-zinc-500">Popular choice</span>
+                            <button class="vote-btn px-6 py-2 bg-amber-500 text-white rounded-full text-sm font-medium hover:bg-amber-600 transition-colors transform hover:scale-105" data-option="1">
+                                VOTE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="group flex flex-col bg-white rounded-xl border border-zinc-200 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-zinc-300 overflow-hidden">
+                    <div class="aspect-[4/3] bg-emerald-50 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=800"
+                             alt="Seaweed Butter"
+                             class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base font-medium text-zinc-900">Seaweed Butter</h3>
+                            <span class="text-xs font-semibold bg-zinc-100 px-2 py-1 rounded text-zinc-900">96 votes</span>
+                        </div>
+                        <p class="text-[13px] text-zinc-500 leading-relaxed mb-6 font-light">
+                            Umami-rich Nori blended with cultured butter and sea salt.
+                        </p>
+
+                        <div class="mt-auto pt-4 border-t border-zinc-100 flex items-center justify-between gap-4">
+                            <span class="text-[11px] text-zinc-500">Unique flavor</span>
+                            <button class="vote-btn px-6 py-2 bg-amber-500 text-white rounded-full text-sm font-medium hover:bg-amber-600 transition-colors transform hover:scale-105" data-option="2">
+                                VOTE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Feature -->
+    <section class="py-24 bg-zinc-900 text-zinc-300 overflow-hidden relative" id="quiz">
+        <div class="w-full px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-2xl font-medium tracking-tight text-white mb-6">Behavioral Feasibility Study</h2>
+                        <p class="text-sm font-light text-zinc-400 leading-relaxed max-w-md">
+                            Help us understand your preferences to better tailor our flavors and improve your experience.
+                        </p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-5">
+                            <div class="h-10 w-10 rounded-md bg-zinc-800 flex items-center justify-center shrink-0 border border-zinc-700/50">
+                                <span class="iconify text-zinc-100" data-icon="lucide:target" data-width="18" data-height="18"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-zinc-100 mb-1">Snacking Goals</h3>
+                                <p class="text-xs text-zinc-500 font-light">Your choice helps us segment customer behavior patterns.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <div class="h-10 w-10 rounded-md bg-zinc-800 flex items-center justify-center shrink-0 border border-zinc-700/50">
+                                <span class="iconify text-zinc-100" data-icon="lucide:users" data-width="18" data-height="18"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-zinc-100 mb-1">Community Insights</h3>
+                                <p class="text-xs text-zinc-500 font-light">Aggregate data informs our R&D and flavor development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Card -->
+                <div class="relative bg-zinc-800/40 backdrop-blur-sm rounded-xl p-8 border border-zinc-700/50 shadow-2xl">
+                    <div class="flex justify-between items-center mb-8 border-b border-zinc-700/50 pb-4">
+                        <span class="text-xs font-medium text-zinc-400 uppercase tracking-widest">Quiz</span>
+                        <div class="flex gap-1">
+                            <div class="w-2 h-2 rounded-full bg-zinc-600"></div>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="text-center mb-8">
+                            <h3 class="text-xl font-semibold text-white mb-2">What's Your Snacking Goal?</h3>
+                            <p class="text-sm text-zinc-400">Select your primary motivation</p>
+                        </div>
+
+                        <form id="quiz-form" class="space-y-4">
+                            <div class="grid grid-cols-1 gap-4">
+                                <label class="group cursor-pointer">
+                                    <input type="radio" name="snacking-goal" value="energy" class="sr-only peer">
+                                    <div class="p-4 rounded-lg border-2 border-zinc-600 text-center transition-all duration-300 peer-checked:border-amber-500 peer-checked:bg-amber-50/10 hover:border-zinc-500">
+                                        <span class="iconify text-2xl text-amber-400 mb-2 block" data-icon="lucide:brain-circuit" data-width="24" data-height="24"></span>
+                                        <span class="text-sm font-medium text-zinc-100">Energy for Studying</span>
+                                    </div>
+                                </label>
+
+                                <label class="group cursor-pointer">
+                                    <input type="radio" name="snacking-goal" value="stress" class="sr-only peer">
+                                    <div class="p-4 rounded-lg border-2 border-zinc-600 text-center transition-all duration-300 peer-checked:border-amber-500 peer-checked:bg-amber-50/10 hover:border-zinc-500">
+                                        <span class="iconify text-2xl text-blue-400 mb-2 block" data-icon="lucide:heart" data-width="24" data-height="24"></span>
+                                        <span class="text-sm font-medium text-zinc-100">Stress Relief</span>
+                                    </div>
+                                </label>
+
+                                <label class="group cursor-pointer">
+                                    <input type="radio" name="snacking-goal" value="movie" class="sr-only peer">
+                                    <div class="p-4 rounded-lg border-2 border-zinc-600 text-center transition-all duration-300 peer-checked:border-amber-500 peer-checked:bg-amber-50/10 hover:border-zinc-500">
+                                        <span class="iconify text-2xl text-purple-400 mb-2 block" data-icon="lucide:tv" data-width="24" data-height="24"></span>
+                                        <span class="text-sm font-medium text-zinc-100">Movie Night</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="text-center pt-4">
+                                <button type="submit" class="px-8 py-3 bg-amber-500 text-white rounded-full font-medium hover:bg-amber-600 transition-all duration-300 transform hover:scale-105">
+                                    Submit Preferences
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Preview -->
+    <section class="py-24 bg-white">
+        <div class="w-full px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-zinc-900 mb-4">
+                    See What Others Are Choosing
+                </h2>
+                <p class="text-lg text-zinc-600">Real-time community voting results</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl border border-zinc-200 p-6 text-center">
+                        <div class="relative mb-4">
+                            <svg class="w-40 h-40 transform -rotate-90 mx-auto">
+                                <circle cx="80" cy="80" r="64" stroke="#e5e7eb" stroke-width="12" fill="none"></circle>
+                                <circle cx="80" cy="80" r="64" stroke="#f59e0b" stroke-width="12" fill="none"
+                                        stroke-dasharray="402.12" stroke-dashoffset="172.91" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-3xl font-bold text-zinc-900" id="percentage-1">57%</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-semibold text-zinc-900 mb-2">Spicy Mala</h3>
+                        <p class="text-sm text-amber-600 font-medium" id="total-votes">128 votes</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-zinc-200 p-6 text-center">
+                        <div class="relative mb-4">
+                            <svg class="w-40 h-40 transform -rotate-90 mx-auto">
+                                <circle cx="80" cy="80" r="64" stroke="#e5e7eb" stroke-width="12" fill="none"></circle>
+                                <circle cx="80" cy="80" r="64" stroke="#10b981" stroke-width="12" fill="none"
+                                        stroke-dasharray="402.12" stroke-dashoffset="228.06" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-3xl font-bold text-zinc-900" id="percentage-2">43%</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-semibold text-zinc-900 mb-2">Seaweed Butter</h3>
+                        <p class="text-sm text-emerald-600 font-medium" id="total-votes-2">96 votes</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 bg-zinc-50 rounded-lg p-6 text-center">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-sm font-medium">
+                        <span class="iconify" data-icon="lucide:bar-chart-3" data-width="14" data-height="14"></span>
+                        <span>Total Participation: 224 votes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-zinc-200 pt-20 pb-12">
+        <div class="w-full px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 mb-20">
+                <div class="col-span-2 md:col-span-1">
+                    <a href="index.html" class="text-base font-semibold tracking-tighter text-zinc-900 uppercase mb-6 block">
+                        Fiocchi<span class="text-zinc-400">.</span>
+                    </a>
+                </div>
+
+                <div>
+                    <h4 class="text-[11px] font-semibold text-zinc-900 uppercase tracking-widest mb-6">Product</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#collection" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Shop All</a></li>
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Subscription</a></li>
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Gift Sets</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-[11px] font-semibold text-zinc-900 uppercase tracking-widest mb-6">About</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Manifesto</a></li>
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Sourcing</a></li>
+                        <li><a href="#" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-[11px] font-semibold text-zinc-900 uppercase tracking-widest mb-6">Newsletter</h4>
+                    <form class="flex flex-col gap-2">
+                        <div class="relative group">
+                            <input type="email" placeholder="email@domain.com" class="w-full bg-zinc-50 border border-zinc-200 text-sm text-zinc-900 rounded-md px-3 py-2 outline-none focus:border-zinc-400 focus:bg-white transition-all placeholder:text-zinc-400 font-light" required>
+                            <button type="submit" class="absolute right-2 top-2 p-0.5 text-zinc-400 hover:text-zinc-900 transition-colors">
+                                <span class="iconify" data-icon="lucide:arrow-right" data-width="16" data-height="16"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-zinc-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[11px] text-zinc-400">&copy; 2024 Fiocchi Popcorn Co.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-zinc-400 hover:text-zinc-900 transition-colors"><span class="iconify" data-icon="lucide:instagram" data-width="16" data-height="16"></span></a>
+                    <a href="#" class="text-zinc-400 hover:text-zinc-900 transition-colors"><span class="iconify" data-icon="lucide:twitter" data-width="16" data-height="16"></span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Voting functionality
+        let votes = { 1: 128, 2: 96 };
+        let hasVoted = false;
+
+        document.querySelectorAll('.vote-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                if (hasVoted) {
+                    showMessage('You have already voted in this session!', 'error');
+                    return;
+                }
+
+                const option = this.getAttribute('data-option');
+                votes[option]++;
+                hasVoted = true;
+
+                // Update vote count
+                const voteCount = document.getElementById(`votes-${option}`);
+                voteCount.textContent = `${votes[option]} votes`;
+
+                // Update all displays
+                updateResults();
+
+                // Show success feedback
+                const originalText = this.textContent;
+                this.textContent = 'VOTED!';
+                this.classList.add('bg-green-500', 'hover:bg-green-600');
+                this.classList.remove('bg-amber-500', 'hover:bg-amber-600');
+                this.disabled = true;
+
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    this.classList.add('bg-amber-500', 'hover:bg-amber-600');
+                    this.disabled = false;
+                }, 2000);
+
+                showMessage('Thank you for voting! Your choice has been recorded.', 'success');
+            });
+        });
+
+        // Quiz form submission
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedGoal = document.querySelector('input[name="snacking-goal"]:checked');
+
+            if (!selectedGoal) {
+                showMessage('Please select your snacking goal before submitting.', 'error');
+                return;
+            }
+
+            // Show success message
+            const goalText = selectedGoal.parentElement.querySelector('.text-sm.font-medium').textContent;
+            showMessage(`Thank you! We've recorded your preference for "${goalText}". Your feedback helps us create better flavors for you!`, 'success');
+
+            // Reset form
+            this.reset();
+        });
+
+        // Update results display
+        function updateResults() {
+            const total = votes[1] + votes[2];
+            const percentage1 = Math.round((votes[1] / total) * 100);
+            const percentage2 = Math.round((votes[2] / total) * 100);
+
+            document.getElementById('percentage-1').textContent = `${percentage1}%`;
+            document.getElementById('percentage-2').textContent = `${percentage2}%`;
+            document.getElementById('total-votes').textContent = `${total} total votes`;
+            document.getElementById('total-votes-2').textContent = `${votes[2]} votes`;
+
+            // Update SVG circles
+            const circumference = 2 * Math.PI * 56;
+            const offset1 = circumference - (percentage1 / 100) * circumference;
+            const offset2 = circumference - (percentage2 / 100) * circumference;
+
+            document.querySelectorAll('circle')[1].style.strokeDashoffset = offset1;
+            document.querySelectorAll('circle')[3].style.strokeDashoffset = offset2;
+        }
+
+        // Message display function
+        function showMessage(message, type) {
+            // Remove existing message if any
+            const existingMessage = document.querySelector('.toast-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            // Create message element
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `toast-message fixed top-20 right-6 px-6 py-4 rounded-lg shadow-lg z-50 transition-all duration-300 transform translate-x-full ${
+                type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+            }`;
+            messageDiv.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <span class="iconify ${type === 'success' ? 'text-white' : 'text-white'}" data-icon="${type === 'success' ? 'lucide:check-circle' : 'lucide:x-circle'}" data-width="20" data-height="20"></span>
+                    <span>${message}</span>
+                </div>
+            `;
+
+            // Add to page
+            document.body.appendChild(messageDiv);
+
+            // Animate in
+            setTimeout(() => {
+                messageDiv.classList.remove('translate-x-full');
+            }, 100);
+
+            // Remove after 5 seconds
+            setTimeout(() => {
+                messageDiv.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.parentNode.removeChild(messageDiv);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
