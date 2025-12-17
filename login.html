@@ -171,25 +171,55 @@
             const password = document.getElementById('password').value;
             const rememberMe = document.getElementById('remember-me').checked;
 
-            // Simulate login process
-            const submitButton = this.querySelector('button[type="submit"]');
+            // Validation credentials
+            const customerCredentials = {
+                email: 'cust@gmail.com',
+                password: '12345678'
+            };
+
+            const adminCredentials = {
+                email: 'admin@gmail.com',
+                password: '12345678'
+            };
+
+            // Validate credentials
+            const submitButton = e.target.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
 
-            // Show loading state
-            submitButton.textContent = 'Signing In...';
-            submitButton.disabled = true;
+            if (email === customerCredentials.email && password === customerCredentials.password) {
+                // Customer login - redirect to index.html
+                submitButton.textContent = 'Welcome! Redirecting to Fiocchi...';
+                submitButton.disabled = true;
+                submitButton.classList.remove('bg-zinc-900', 'hover:bg-zinc-800');
+                submitButton.classList.add('bg-green-600', 'hover:bg-green-700');
 
-            // Simulate API call
-            setTimeout(() => {
-                alert(`Login attempted!\nEmail: ${email}\nRemember Me: ${rememberMe}\n\n(Note: This is a demo - no actual login functionality)`);
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            } else if (email === adminCredentials.email && password === adminCredentials.password) {
+                // Admin login - redirect to kernel-dashboard.html
+                submitButton.textContent = 'Welcome Admin! Redirecting to Dashboard...';
+                submitButton.disabled = true;
+                submitButton.classList.remove('bg-zinc-900', 'hover:bg-zinc-800');
+                submitButton.classList.add('bg-green-600', 'hover:bg-green-700');
 
-                // Reset button
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
+                setTimeout(() => {
+                    window.location.href = 'kernel-dashboard.html';
+                }, 2000);
+            } else {
+                // Invalid credentials
+                submitButton.textContent = 'Invalid email or password. Please try again.';
+                submitButton.disabled = true;
+                submitButton.classList.remove('bg-zinc-900', 'hover:bg-zinc-800');
+                submitButton.classList.add('bg-red-600', 'hover:bg-red-700');
 
-                // Clear form
-                this.reset();
-            }, 1500);
+                setTimeout(() => {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                    submitButton.classList.add('bg-zinc-900', 'hover:bg-zinc-800');
+                }, 3000);
+            }
         });
 
         // Add focus effects to inputs
@@ -200,6 +230,37 @@
 
             input.addEventListener('blur', function() {
                 this.parentElement.classList.remove('ring-2', 'ring-zinc-900', 'ring-opacity-50');
+            });
+        });
+
+        // Add demo credentials hint
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+
+            // Add placeholder hints
+            emailInput.addEventListener('focus', function() {
+                if (this.placeholder === 'you@university.edu') {
+                    this.placeholder = 'Try: cust@gmail.com or admin@gmail.com';
+                }
+            });
+
+            emailInput.addEventListener('blur', function() {
+                if (this.placeholder === 'Try: cust@gmail.com or admin@gmail.com') {
+                    this.placeholder = 'you@university.edu';
+                }
+            });
+
+            passwordInput.addEventListener('focus', function() {
+                if (this.placeholder === '••••••••') {
+                    this.placeholder = 'Password: 12345678';
+                }
+            });
+
+            passwordInput.addEventListener('blur', function() {
+                if (this.placeholder === 'Password: 12345678') {
+                    this.placeholder = '••••••••';
+                }
             });
         });
     </script>
