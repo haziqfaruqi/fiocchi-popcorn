@@ -1,0 +1,13 @@
+*
+!*.html
+!*.css
+!*.js
+!*.json
+!*.ico
+!*.png
+!*.jpg
+!*.jpeg
+!*.gif
+!*.svg
+!webfonts/
+!images/

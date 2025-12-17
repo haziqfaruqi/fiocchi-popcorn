@@ -1,8 +1,28 @@
 {
-  "version": 2,
+  "version": 3,
   "builds": [
     {
-      "src": "**/*",
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "login.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "flavor-lab.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "subscription.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "kernel-dashboard.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "vercel.json",
       "use": "@vercel/static"
     }
   ],
@@ -12,5 +32,6 @@
       "dest": "/$1"
     }
   ],
-  "cleanUrls": true
+  "cleanUrls": true,
+  "functions": {}
 }
