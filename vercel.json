@@ -6,16 +6,10 @@
       "use": "@vercel/static"
     }
   ],
-  "cleanUrls": true,
-  "headers": [
+  "rewrites": [
     {
-      "source": "/img/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "source": "/(.*)",
+      "destination": "/$1"
     }
   ]
 }
