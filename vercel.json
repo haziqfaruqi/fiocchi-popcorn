@@ -1,10 +1,8 @@
 {
+  "framework": "static",
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "installCommand": "",
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/img/(.*)",
-      "destination": "/img/$1"
-    }
-  ]
+  "trailingSlash": false
 }
