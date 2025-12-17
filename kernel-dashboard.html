@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kernel - Fiocchi Internal Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            850: '#1f1f22',
+                            900: '#17171a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .word-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .word-cloud span {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+        }
+        .word-cloud span:hover {
+            transform: scale(1.1);
+        }
+        .word-size-1 { font-size: 0.875rem; opacity: 0.6; }
+        .word-size-2 { font-size: 1rem; opacity: 0.7; }
+        .word-size-3 { font-size: 1.25rem; opacity: 0.8; }
+        .word-size-4 { font-size: 1.5rem; opacity: 0.9; }
+        .word-size-5 { font-size: 1.75rem; font-weight: 600; opacity: 1; }
+    </style>
+</head>
+<body class="bg-zinc-900 text-zinc-100 font-sans antialiased">
+
+    <!-- Dashboard Header -->
+    <nav class="fixed top-0 w-full z-50 bg-zinc-800/90 backdrop-blur-xl border-b border-zinc-700">
+        <div class="w-full px-6 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+                    <span class="iconify text-zinc-900 text-xl" data-icon="lucide:cpu" data-width="20" data-height="20"></span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-semibold text-white">Fiocchi Internal</h1>
+                    <p class="text-xs text-zinc-400">The Kernel - Knowledge Repository</p>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Public Site</a>
+                <a href="flavor-lab.html" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Flavor Lab</a>
+                <a href="subscription.html" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Subscriptions</a>
+                <span class="text-sm font-medium text-amber-500">Dashboard</span>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <p class="text-xs font-medium text-white">Last Updated</p>
+                    <p class="text-xs text-zinc-400">2 mins ago</p>
+                </div>
+                <div class="h-8 w-px bg-zinc-700 mx-2"></div>
+                <button class="p-2 text-zinc-400 hover:text-white transition-colors">
+                    <span class="iconify" data-icon="lucide:refresh-cw" data-width="18" data-height="18"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-12">
+        <!-- Header -->
+        <section class="px-6 pt-12 pb-8 border-b border-zinc-800">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-2">The Kernel</h2>
+                        <p class="text-zinc-400">Real-time Knowledge Management Dashboard</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-green-400">Live Data</span>
+                    </div>
+                </div>
+
+                <!-- KM Metrics -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
+                    <div class="bg-zinc-800/50 rounded-lg p-4 border border-zinc-700">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="iconify text-amber-500" data-icon="lucide:users" data-width="18" data-height="18"></span>
+                            <span class="text-xs text-zinc-400">Active Participants</span>
+                        </div>
+                        <p class="text-2xl font-bold text-white">156</p>
+                        <p class="text-xs text-green-400">+12% this week</p>
+                    </div>
+                    <div class="bg-zinc-800/50 rounded-lg p-4 border border-zinc-700">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="iconify text-blue-500" data-icon="lucide:brain" data-width="18" data-height="18"></span>
+                            <span class="text-xs text-zinc-400">Knowledge Points</span>
+                        </div>
+                        <p class="text-2xl font-bold text-white">2,847</p>
+                        <p class="text-xs text-green-400">+24% growth</p>
+                    </div>
+                    <div class="bg-zinc-800/50 rounded-lg p-4 border border-zinc-700">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="iconify text-purple-500" data-icon="lucide:target" data-width="18" data-height="18"></span>
+                            <span class="text-xs text-zinc-400">Conversion Rate</span>
+                        </div>
+                        <p class="text-2xl font-bold text-white">34.2%</p>
+                        <p class="text-xs text-green-400">+5.1% improvement</p>
+                    </div>
+                    <div class="bg-zinc-800/50 rounded-lg p-4 border border-zinc-700">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="iconify text-green-500" data-icon="lucide:trending-up" data-width="18" data-height="18"></span>
+                            <span class="text-xs text-zinc-400">ROI on KM</span>
+                        </div>
+                        <p class="text-2xl font-bold text-white">284%</p>
+                        <p class="text-xs text-amber-400">Optimal range</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Grid -->
+        <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Section 1: R&D Insights -->
+            <section class="lg:col-span-2 bg-zinc-800/50 rounded-xl p-6 border border-zinc-700">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-2">R&D Insights</h3>
+                        <p class="text-sm text-zinc-400">Real-time customer voting results</p>
+                    </div>
+                    <span class="text-xs font-medium text-amber-500 bg-amber-500/10 px-3 py-1 rounded-full">LIVE</span>
+                </div>
+
+                <div class="bg-zinc-800 rounded-lg p-4">
+                    <h4 class="text-lg font-medium text-white mb-4 text-center">Current Flavor Battle: Spicy Yuzu vs. Truffle Salt</h4>
+                    <div class="relative h-80">
+                        <canvas id="votingChart"></canvas>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="text-center">
+                            <div class="h-12 w-12 mx-auto bg-red-500/20 rounded-lg flex items-center justify-center mb-2">
+                                <span class="iconify text-red-500 text-xl" data-icon="lucide:flame" data-width="24" data-height="24"></span>
+                            </div>
+                            <p class="text-sm font-medium text-white">Spicy Yuzu</p>
+                            <p class="text-2xl font-bold text-red-500">62%</p>
+                            <p class="text-xs text-zinc-400">156 votes</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="h-12 w-12 mx-auto bg-purple-500/20 rounded-lg flex items-center justify-center mb-2">
+                                <span class="iconify text-purple-500 text-xl" data-icon="lucide:sparkles" data-width="24" data-height="24"></span>
+                            </div>
+                            <p class="text-sm font-medium text-white">Truffle Salt</p>
+                            <p class="text-2xl font-bold text-purple-500">38%</p>
+                            <p class="text-xs text-zinc-400">96 votes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+                    <div class="flex gap-3">
+                        <span class="iconify text-amber-500 text-xl flex-shrink-0" data-icon="lucide:info" data-width="20" data-height="20"></span>
+                        <div>
+                            <p class="text-sm text-amber-400 font-medium mb-1">KM Purpose</p>
+                            <p class="text-xs text-amber-300">Customer input directly influences product development. Voting patterns indicate strong preference for bold, innovative flavors.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Demand Forecasting -->
+            <section class="lg:col-span-1 bg-zinc-800/50 rounded-xl p-6 border border-zinc-700">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-white mb-2">Demand Forecasting</h3>
+                    <p class="text-sm text-zinc-400">Predicted inventory needs</p>
+                </div>
+
+                <div class="bg-zinc-800 rounded-lg p-4">
+                    <h4 class="text-lg font-medium text-white mb-4 text-center">Projected Ingredient Needs</h4>
+                    <div class="relative h-64">
+                        <canvas id="forecastChart"></canvas>
+                    </div>
+                    <div class="space-y-2 mt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-zinc-400">Popcorn Kernels</span>
+                            <span class="text-sm font-medium text-white">2,847 lbs</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-zinc-400">Seasonings</span>
+                            <span class="text-sm font-medium text-white">1,423 oz</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-zinc-400">Packaging</span>
+                            <span class="text-sm font-medium text-white">5,694 units</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                    <div class="flex gap-3">
+                        <span class="iconify text-blue-500 text-xl flex-shrink-0" data-icon="lucide:database" data-width="20" data-height="20"></span>
+                        <div>
+                            <p class="text-sm text-blue-400 font-medium mb-1">KM Purpose</p>
+                            <p class="text-xs text-blue-300">Habits analysis optimizes supply chain. 15% cost savings through predictive ordering.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Customer Sentiment -->
+            <section class="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-white mb-2">Customer Sentiment</h3>
+                    <p class="text-sm text-zinc-400">Quiz feedback analysis</p>
+                </div>
+
+                <div class="bg-zinc-800 rounded-lg p-6">
+                    <h4 class="text-lg font-medium text-white mb-4 text-center">Student Motivations</h4>
+                    <div class="word-cloud">
+                        <span class="word-size-5 bg-amber-500/20 text-amber-400">Stress</span>
+                        <span class="word-size-4 bg-blue-500/20 text-blue-400">Late-night</span>
+                        <span class="word-size-5 bg-green-500/20 text-green-400">Energy</span>
+                        <span class="word-size-3 bg-purple-500/20 text-purple-400">Convenient</span>
+                        <span class="word-size-4 bg-red-500/20 text-red-400">Reward</span>
+                        <span class="word-size-2 bg-pink-500/20 text-pink-400">Focus</span>
+                        <span class="word-size-3 bg-indigo-500/20 text-indigo-400">Social</span>
+                        <span class="word-size-2 bg-yellow-500/20 text-yellow-400">Quick</span>
+                        <span class="word-size-3 bg-teal-500/20 text-teal-400">Budget</span>
+                        <span class="word-size-2 bg-orange-500/20 text-orange-400">Tasty</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                    <div class="flex gap-3">
+                        <span class="iconify text-purple-500 text-xl flex-shrink-0" data-icon="lucide:brain-circuit" data-width="20" data-height="20"></span>
+                        <div>
+                            <p class="text-sm text-purple-400 font-medium mb-1">KM Purpose</p>
+                            <p class="text-xs text-purple-300">Visualizes tacit knowledge about customer motivations. Reveals "Stress" and "Energy" as primary drivers.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Actionable Insights -->
+            <section class="lg:col-span-2 bg-zinc-800/50 rounded-xl p-6 border border-zinc-700">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-white mb-2">Actionable Insights</h3>
+                    <p class="text-sm text-zinc-400">Knowledge in action</p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Alert 1 -->
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <span class="iconify text-red-500 text-lg flex-shrink-0 mt-0.5" data-icon="lucide:alert-triangle" data-width="20" data-height="20"></span>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <h4 class="text-sm font-semibold text-red-400">🚨 Alert: Exam Prep Segment Growth</h4>
+                                    <span class="text-xs text-red-500 font-medium">HIGH PRIORITY</span>
+                                </div>
+                                <p class="text-sm text-red-300 mb-2">'Exam Prep' segment is growing rapidly (+28% this week). Students specifically seek "Energy" and "Focus" benefits.</p>
+                                <div class="bg-red-500/20 rounded p-3">
+                                    <p class="text-xs font-medium text-red-400 mb-1">Recommendation:</p>
+                                    <p class="text-xs text-red-300">Launch "Spicy Energy Boost" campaign next week. Bundle with caffeine-infused popcorn for exam periods.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alert 2 -->
+                    <div class="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <span class="iconify text-amber-500 text-lg flex-shrink-0 mt-0.5" data-icon="lucide:lightbulb" data-width="20" data-height="20"></span>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <h4 class="text-sm font-semibold text-amber-400">💡 Opportunity: Late-Night Demand</h4>
+                                    <span class="text-xs text-amber-500 font-medium">MEDIUM</span>
+                                </div>
+                                <p class="text-sm text-amber-300 mb-2">42% of consumption occurs after 9 PM. "Convenient" and "Quick" are highly valued attributes.</p>
+                                <div class="bg-amber-500/20 rounded p-3">
+                                    <p class="text-xs font-medium text-amber-400 mb-1">Recommendation:</p>
+                                    <p class="text-xs text-amber-300">Create "Late-Night Study Pack" with single-serve portions and easy-open packaging.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alert 3 -->
+                    <div class="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <span class="iconify text-green-500 text-lg flex-shrink-0 mt-0.5" data-icon="lucide:check-circle" data-width="20" data-height="20"></span>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <h4 class="text-sm font-semibold text-green-400">✅ Positive Trend: Social Sharing</h4>
+                                    <span class="text-xs text-green-500 font-medium">LOW</span>
+                                </div>
+                                <p class="text-sm text-green-300 mb-2">Social mentions increased 45% after introducing voting feature. Students love co-creation.</p>
+                                <div class="bg-green-500/20 rounded p-3">
+                                    <p class="text-xs font-medium text-green-400 mb-1">Action:</p>
+                                    <p class="text-xs text-green-300">Double down on community engagement. Launch "Student Creator" ambassador program.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 bg-zinc-800 border border-zinc-700 rounded-lg">
+                    <div class="flex gap-3">
+                        <span class="iconify text-zinc-400 text-xl flex-shrink-0" data-icon="lucide:target" data-width="20" data-height="20"></span>
+                        <div>
+                            <p class="text-sm text-zinc-400 font-medium mb-1">KM Purpose</p>
+                            <p class="text-xs text-zinc-300">Final step of knowledge management: using data to drive business decisions. Dashboard updates every 2 minutes with real-time insights.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Sources Footer -->
+            <section class="lg:col-span-3 bg-zinc-800/30 rounded-xl p-4 border border-zinc-700">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-6 text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="h-2 w-2 bg-green-500 rounded-full"></div>
+                            <span class="text-zinc-400">Flavor Lab: Live Voting</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="h-2 w-2 bg-blue-500 rounded-full"></div>
+                            <span class="text-zinc-400">Subscriptions: Active</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="h-2 w-2 bg-purple-500 rounded-full"></div>
+                            <span class="text-zinc-400">Quiz Data: Processed</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-zinc-500">
+                        <span class="iconify" data-icon="lucide:shield-check" data-width="14" data-height="14"></span>
+                        <span>Internal Use Only • KM-2024-V1</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Voting Chart
+        const votingCtx = document.getElementById('votingChart').getContext('2d');
+        const votingChart = new Chart(votingCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Spicy Yuzu', 'Truffle Salt'],
+                datasets: [{
+                    data: [62, 38],
+                    backgroundColor: ['#ef4444', '#a855f7'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // Forecast Chart
+        const forecastCtx = document.getElementById('forecastChart').getContext('2d');
+        const forecastChart = new Chart(forecastCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Popcorn (lbs)',
+                    data: [650, 720, 680, 797],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#9ca3af'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#9ca3af'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Auto-refresh simulation
+        setInterval(() => {
+            // Simulate data updates
+            const newVotingData = [
+                Math.floor(Math.random() * 10) + 58,
+                Math.floor(Math.random() * 10) + 32
+            ];
+            votingChart.data.datasets[0].data = newVotingData;
+            votingChart.update();
+        }, 5000);
+    </script>
+</body>
+</html>
