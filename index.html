@@ -83,6 +83,7 @@
                 <a href="index.html#collection" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Collection</a>
                 <a href="flavor-lab.html" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Flavor Lab</a>
                 <a href="subscription.html" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Subscription</a>
+                <a href="training.html" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Training</a>
             </div>
 
             <!-- Actions -->
@@ -109,6 +110,7 @@
             <a href="index.html#collection" class="block text-base font-medium text-zinc-900 hover:text-zinc-600 transition-colors py-2">Collection</a>
             <a href="flavor-lab.html" class="block text-base font-medium text-zinc-900 hover:text-zinc-600 transition-colors py-2">Flavor Lab</a>
             <a href="subscription.html" class="block text-base font-medium text-zinc-900 hover:text-zinc-600 transition-colors py-2">Subscription</a>
+            <a href="training.html" class="block text-base font-medium text-zinc-900 hover:text-zinc-600 transition-colors py-2">Training</a>
             <div class="pt-4 border-t border-zinc-200 mt-4">
                 <a href="login.html" class="block text-base font-medium text-zinc-900 hover:text-zinc-600 transition-colors py-2">Login</a>
             </div>
@@ -461,6 +463,48 @@
         </div>
     </footer>
 
+    <!-- Chatbot Widget -->
+    <div id="chatbot-toggle" class="fixed bottom-6 right-6 bg-amber-500 text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-amber-600 transition-all duration-300 z-50">
+        <span class="iconify" data-icon="lucide:message-circle" data-width="24" data-height="24"></span>
+        <span class="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+    </div>
+
+    <div id="chatbot-widget" class="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-xl shadow-2xl border border-zinc-200 flex flex-col z-50 transform translate-x-full transition-all duration-300">
+        <!-- Chatbot Header -->
+        <div id="chatbot-header" class="bg-amber-500 text-white p-4 rounded-t-xl flex items-center justify-between">
+            <div>
+                <span class="text-lg font-semibold hidden">Fiocchi Assistant</span>
+                <span class="text-sm">Fiocchi Assistant</span>
+            </div>
+            <div class="flex gap-2">
+                <button id="chatbot-minimize" class="text-white hover:text-gray-200">
+                    <span class="iconify" data-icon="lucide:minus" data-width="16" data-height="16"></span>
+                </button>
+                <button id="chatbot-close" class="text-white hover:text-gray-200">
+                    <span class="iconify" data-icon="lucide:x" data-width="16" data-height="16"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chatbot Body -->
+        <div id="chatbot-body" class="flex-1 p-4 overflow-hidden flex flex-col">
+            <div id="chatbot-messages" class="flex-1 overflow-y-auto mb-4 space-y-2">
+                <div class="mb-4 text-left">
+                    <div class="inline-block max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-zinc-100 text-zinc-800">
+                        <p class="text-sm">Hello! 👋 Welcome to Fiocchi! How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <input id="chatbot-input" type="text" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm">
+                <button id="chatbot-send" class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors">
+                    <span class="iconify" data-icon="lucide:send" data-width="16" data-height="16"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Voting functionality
         document.querySelectorAll('button').forEach(button => {
@@ -556,6 +600,103 @@
                     });
                 }
             });
+        });
+
+        // Chatbot functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotWidget = document.getElementById('chatbot-widget');
+            const chatbotMinimize = document.getElementById('chatbot-minimize');
+            const chatbotClose = document.getElementById('chatbot-close');
+            const chatbotHeader = document.getElementById('chatbot-header');
+            const chatbotBody = document.getElementById('chatbot-body');
+            const chatbotInput = document.getElementById('chatbot-input');
+            const chatbotSend = document.getElementById('chatbot-send');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+
+            // Chatbot toggle
+            chatbotToggle.addEventListener('click', function() {
+                chatbotWidget.classList.remove('translate-x-full');
+                chatbotToggle.style.display = 'none';
+                chatbotMinimize.style.display = 'flex';
+                chatbotBody.classList.remove('hidden');
+                chatbotHeader.querySelector('.text-lg').style.display = 'block';
+                chatbotHeader.querySelector('.text-sm').style.display = 'none';
+            });
+
+            // Minimize chatbot
+            chatbotMinimize.addEventListener('click', function() {
+                chatbotBody.classList.add('hidden');
+                chatbotMinimize.style.display = 'none';
+                chatbotHeader.querySelector('.text-lg').style.display = 'none';
+                chatbotHeader.querySelector('.text-sm').style.display = 'block';
+            });
+
+            // Close chatbot
+            chatbotClose.addEventListener('click', function() {
+                chatbotWidget.classList.add('translate-x-full');
+                chatbotToggle.style.display = 'flex';
+            });
+
+            // Send message
+            chatbotSend.addEventListener('click', sendMessage);
+            chatbotInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (!message) return;
+
+                // Add user message
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+
+                // Simulate bot response
+                setTimeout(() => {
+                    const response = generateBotResponse(message);
+                    addMessage(response, 'bot');
+                }, 1000);
+            }
+
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `mb-4 ${sender === 'user' ? 'text-right' : 'text-left'}`;
+                messageDiv.innerHTML = `
+                    <div class="inline-block max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                        sender === 'user'
+                            ? 'bg-amber-500 text-white'
+                            : 'bg-zinc-100 text-zinc-800'
+                    }">
+                        <p class="text-sm">${text}</p>
+                    </div>
+                `;
+                chatbotMessages.appendChild(messageDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            function generateBotResponse(message) {
+                const responses = {
+                    'hello': 'Hello! 👋 Welcome to Fiocchi! How can I help you today?',
+                    'hi': 'Hi there! 😊 What can I assist you with about our popcorn?',
+                    'price': 'Our popcorn starts from RM12 per bag. Subscription plans start from RM48/month for 4 bags. Would you like to know more?',
+                    'delivery': 'We deliver on campus every 2 weeks with free delivery for subscribers! Delivery days are Monday and Wednesday.',
+                    'flavors': 'We offer Sea Salt & Pepper, White Cheddar, Truffle Rosemary, and Caramel Drizzle. Which one is your favorite?',
+                    'subscription': 'Our subscription includes customizable deliveries, 15% discount, free campus delivery, and exam week survival kits.',
+                    'contact': 'You can reach us at contact@fiocchi.my or visit us at our campus store. Business hours: 9 AM - 6 PM daily.',
+                    'default': "I'm here to help! You can ask about prices, flavors, subscriptions, delivery, or any other questions about Fiocchi popcorn."
+                };
+
+                const lowerMessage = message.toLowerCase();
+                for (const [key, response] of Object.entries(responses)) {
+                    if (lowerMessage.includes(key)) {
+                        return response;
+                    }
+                }
+                return responses.default;
+            }
         });
     </script>
 </body>
